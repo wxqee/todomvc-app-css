@@ -1,26 +1,23 @@
 {
-  "name": "todomvc-app-css",
-  "version": "2.1.0",
-  "description": "CSS for TodoMVC apps",
-  "license": "CC-BY-4.0",
-  "repository": "tastejs/todomvc-app-css",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+  "name": "todomvc-js",
+  "version": "1.0.0",
+  "description": "TodoMVC in pure javascript without thirdparty.",
+  "main": "index.js",
+  "scripts": {
+    "server": "http-dev-server -f ./dev-server-config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": [
-    "index.css"
-  ],
-  "keywords": [
-    "todomvc",
-    "tastejs",
-    "app",
-    "todo",
-    "template",
-    "css",
-    "style",
-    "stylesheet"
-  ],
-  "style": "index.css"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxqee/todomvc-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wxqee/todomvc-js/issues"
+  },
+  "homepage": "https://github.com/wxqee/todomvc-js#readme",
+  "devDependencies": {
+    "http-dev-server": "^0.2.3"
+  }
 }
