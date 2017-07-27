@@ -14,11 +14,9 @@
       model: todo,
       template: document.getElementById('todo-item-template').innerHTML,
       events: {
-        'click .toggle': function(e) {
-          todo.done = !todo.done;
-          todoItem.render();
-
-          alert('todo item #' + todo._id + ' has been toggled.');
+        'click .toggle': function() {
+          this.model.done = !this.model.done;
+          this.render();
         }
       }
     });
