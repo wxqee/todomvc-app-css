@@ -1,3 +1,44 @@
+(function(window) {
+  var app = window.app;
+
+  const TodoList = (function(superClass) {
+    extend(TodoList, superClass);
+
+    function TodoList(options) {
+      var settings = Object.assign({}, {
+        tagName: 'ul',
+        className: 'todo-list',
+      }, options);
+
+      TodoList.__super__.constructor.call(this, settings);
+    }
+
+    TodoList.prototype.render = function() {
+      var self = this;
+
+      this.model.forEach(function(todo) {
+        var todo = new app.TodoItem({
+          model: todo,
+          events: {
+            'click .destroy': function() {
+              var index = self.model.indexOf(todo);
+              self.model.splice(todo);
+              self.render();
+            }
+          }
+        });
+
+        self.el.appendChild(todo.render().el);
+      });
+
+      return this;
+    };
+
+    return TodoList;
+  })(BaseComponent);
+
+  app.TodoList = TodoList;
+})(window);
 
 (function(window) {
   var todos = [
@@ -7,21 +48,10 @@
     {_id: 3, text: 'task 4', done: false},
   ];
 
-  const todoList = document.querySelector('.todo-list');
-
-  todos.forEach(function(todo) {
-    var todoItem = new app.TodoItem({
-      model: todo,
-      template: document.getElementById('todo-item-template').innerHTML,
-      events: {
-        'click .toggle': function() {
-          this.model.done = !this.model.done;
-          this.render();
-        }
-      }
-    });
-
-    todoList.appendChild(todoItem.render().el);
+  var todoList = new app.TodoList({
+    model: todos
   });
+  var todoListContainer = document.querySelector('.todo-list-container');
+  todoListContainer.appendChild(todoList.render().el);
 })(window);
 
